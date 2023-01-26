@@ -48,7 +48,7 @@ public class BookController {
     public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not found for this id :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found for this id : " + id));
 
         bookRepository.delete(book);
         Map<String, Boolean> response = new HashMap<>();
