@@ -35,7 +35,7 @@ public class BookController {
 
     @PutMapping("/books/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable(value = "id") Long id, @RequestBody Book bookDeatils) throws ResourceNotFoundException {
-        Book updatedBook = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
+        Book updatedBook = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book not exist with id: " + id));
 
         updatedBook.setId(bookDeatils.getId());
         updatedBook.setName(bookDeatils.getName());
@@ -48,7 +48,7 @@ public class BookController {
     public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found for this id :: " + id));
 
         bookRepository.delete(book);
         Map<String, Boolean> response = new HashMap<>();
